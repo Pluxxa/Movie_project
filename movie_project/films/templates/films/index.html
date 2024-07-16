@@ -1,0 +1,36 @@
+<!-- films/templates/films/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center bg-light py-5">
+    <h1 class="display-4">Добро пожаловать на сайт Фильмы!</h1>
+    <p class="lead">Оставьте свой отзыв о любимых фильмах и узнайте, что думают другие.</p>
+    <hr class="my-4">
+    <p>Чтобы добавить новый отзыв, нажмите на кнопку ниже.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'added' %}" role="button">Добавить отзыв</a>
+</div>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Последние отзывы</h2>
+    <div class="row">
+        <!-- Пример карточек отзывов -->
+        {% if films %}
+            {% for film in films %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ film.name }}</h5>
+                            <p class="card-text">{{ film.short_description }}</p>
+                            <p class="card-text">{{ film.text }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h4>Записей еще нет</h4>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

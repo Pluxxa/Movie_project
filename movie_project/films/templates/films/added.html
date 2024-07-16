@@ -1,0 +1,28 @@
+<!-- films/templates/new.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}New{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Welcome to the New Page</h1>
+    <p>This is the new page content.</p>
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_title" class="form-label">Title</label>
+            {{ form.name|as_crispy_field }}
+        </div>
+        <div class="mb-3">
+            <label for="id_short_description" class="form-label">Short Description</label>
+            {{ form.short_description|as_crispy_field }}
+        </div>
+        <div class="mb-3">
+            <label for="id_text" class="form-label">Text</label>
+            {{ form.text|as_crispy_field }}
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить отзыв</button>
+    </form>
+</div>
+{% endblock %}
